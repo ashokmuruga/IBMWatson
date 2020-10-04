@@ -1,0 +1,234 @@
+{
+  "intents": [
+    {
+      "intent": "Enquiry",
+      "examples": [
+        {
+          "text": "How about the infrastructure of the College?"
+        },
+        {
+          "text": "How many UG courses are offered ?"
+        },
+        {
+          "text": "Is ATM facilty available within the campus?"
+        },
+        {
+          "text": "What about Hostel environemnt?"
+        },
+        {
+          "text": "What about the canteen,mess,pantries available in the campus?"
+        },
+        {
+          "text": "What about transport facilities?"
+        },
+        {
+          "text": "What is the placement status of current final year students in campus?"
+        },
+        {
+          "text": "Where is the college situated?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "Good Afternoon"
+        },
+        {
+          "text": "Good Evening"
+        },
+        {
+          "text": "Good Morning"
+        },
+        {
+          "text": "Hai"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "ATM",
+          "synonyms": [
+            "atms"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Canteen",
+          "synonyms": [
+            "cafeteria",
+            "canteens",
+            "lunchroom"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Courses",
+          "synonyms": [
+            "programmes",
+            "programs",
+            "specialisations"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Infrastructure",
+          "synonyms": [
+            "facilities",
+            "transportation"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Placement",
+          "synonyms": [
+            "job offers",
+            "jobs",
+            "placements",
+            "salary ",
+            "salary package",
+            "training"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Transport",
+          "synonyms": [
+            "Bus",
+            "Buses",
+            "transportation"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Contact M.Ashok in 7667472476"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_7_1601829859388",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Have a Nice Day! How can I Help You?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Greetings",
+      "dialog_node": "node_7_1601828421759",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Enquiry",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please Visit www.ritchennai.edu.in"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@enquiry",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_7_1601829859388",
+      "previous_sibling": "node_7_1601828421759"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Welcome to Rajalakshmi Institute of Technology"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "RITBot",
+  "language": "en",
+  "description": ""
+}
